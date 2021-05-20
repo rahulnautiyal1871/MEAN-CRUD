@@ -25,11 +25,6 @@ var userSchema=new mongoose.Schema({
         type:String,
         trim:true
     },
-    
-    password:{
-        type:String,
-        trim:true
-    },
     address:{
         type:String,   
     },
