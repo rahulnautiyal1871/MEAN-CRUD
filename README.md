@@ -11,5 +11,4 @@ Go to the angular-app folder open cmd & Follow these commands =>
 2=> ng serve -o.
 
 
-This is not completed yet.I am working it on my free time .
  
