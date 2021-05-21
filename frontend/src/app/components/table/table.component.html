@@ -1,0 +1,83 @@
+<h1 class="text-center">List of all users</h1>
+<div style='float:right; margin:10px'>
+    <!-- <a href="#" [routerLink]="['/home/register']" routerLinkActive="active">\
+    
+    </a> -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="onCreateButton();" data-bs-target="#staticBackdrop">
+     Add New User
+    </button>
+      
+  </div> 
+<div class=" container-fluid">
+
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let data of allUserData">
+                <td><span [innerText]="data.full_name"></span></td>
+                <td><span [innerText]="data.email"></span></td>
+                <td><span [innerText]="data.dob"></span></td>
+                <td><span [innerText]="data.address"></span></td>
+                <td><button class="btn btn-sm btn-primary m-3"data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getDataById(data)"><i class="fas fa-edit"></i></button> <button (click)="onDelete(data._id)" class="btn btn-sm  btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- Scrollable modal -->
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div  [hidden]="isModalShown" class="modal-dialog">
+      <div class="modal-content">
+        <form  [formGroup]="registerForm"> 
+
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Register  user from here</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control"  formControlName="fullName" name="fullName" id="fullName" required >
+                <label for="floatingInput">Full Name </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" formControlName="email" name="email" id="email" placeholder="example@gmail.com" required>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="date" class="form-control" formControlName="dob" name="dob" id="dob" placeholder="Date Of Birth" required>
+                <label for="floatingInput">DOB </label>
+              </div>
+              
+              <div class="form-floating">
+                <textarea class="form-control" placeholder="Enter you address" formControlName="address" name="address" id="address" required style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Address</label>
+                <!-- <span class="error"  >This field is required</span> -->
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <!-- <button *ngIf="flag == 1" (click)="onSubmit()" id="submit">update</button> -->
+          <input  *ngIf="flag == 1" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onUpdate()"  [disabled]="!registerForm.valid"  value="Update"/>
+          <input  *ngIf="flag == 0" type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="onSubmit()" [disabled]="!registerForm.valid"  [disabled]="!registerForm.valid"  value="Create"/>
+        </div>
+    </form> 
+      </div>
+    </div>
+  </div>
