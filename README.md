@@ -6,7 +6,7 @@ To start backend run these command .
 2=> npm start
 
 and for start Frontend
-Go to the angular-app folder open cmd & Follow these commands =>
+Go to the frontend folder open cmd & Follow these commands =>
 1=> npm install 
 2=> ng serve -o.
 
